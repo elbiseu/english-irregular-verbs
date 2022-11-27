@@ -1,0 +1,20 @@
+{{define "PlayingBoard"}}
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>English irregular verbs</title>
+        <link rel="stylesheet" href="/static/styles.css"/>
+    </head>
+    <body>
+    <div>
+        <a href="/flashcard?id={{.Id}}">{{.Value}}</a>
+        <p>{{.Form}}</p>
+        <a href="/flashcard?id={{.Base.Id}}">{{.Base.Value}}</a>
+        <a href="/flashcard?id={{.PastSimple.Id}}">{{.PastSimple.Value}}</a>
+        <a href="/flashcard?id={{.PastParticiple.Id}}">{{.PastParticiple.Value}}</a>
+        <a>{{.Next}}</a>
+    </div>
+    </body>
+    </html>
+{{end}}
