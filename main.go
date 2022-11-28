@@ -14,6 +14,7 @@ type verb struct {
 	Id             int
 	Value          string
 	Form           string
+	Audio          string
 	Base           *verb
 	PastSimple     *verb
 	PastParticiple *verb
@@ -97,6 +98,7 @@ func init() {
 			Id:             i + 1,
 			Value:          forms[0],
 			Form:           base,
+			Audio:          "https://storage.googleapis.com/emptyopenproject/rise.mp3",
 			Base:           nil,
 			PastSimple:     nil,
 			PastParticiple: nil,
@@ -105,6 +107,7 @@ func init() {
 			Id:             i + 2,
 			Value:          forms[1],
 			Form:           pastSimple,
+			Audio:          "https://storage.googleapis.com/emptyopenproject/rise.mp3",
 			Base:           nil,
 			PastSimple:     nil,
 			PastParticiple: nil,
@@ -113,6 +116,7 @@ func init() {
 			Id:             i + 3,
 			Value:          forms[2],
 			Form:           pastParticiple,
+			Audio:          "https://storage.googleapis.com/emptyopenproject/rise.mp3",
 			Base:           nil,
 			PastSimple:     nil,
 			PastParticiple: nil,
@@ -139,7 +143,7 @@ func init() {
 func main() {
 	serveMux := http.NewServeMux()
 	serveMux.Handle("/static/", http.StripPrefix("/static", http.FileServer(http.Dir("./static"))))
-	serveMux.HandleFunc("/flashcard", flashcardHandler)
+	serveMux.HandleFunc("/flashcard/", flashcardHandler)
 	if err := http.ListenAndServe(":8080", serveMux); err != nil {
 		log.Fatal(err)
 	}
